@@ -1,0 +1,66 @@
+1) Crea 5 libros con los siguientes nombres: C Sharp, Java, Python, PHP, Ruby
+    book.objects.create(title="C Sharp", desc="description for C Sharp")
+    book.objects.create(title="Java", desc="description for Java")
+    book.objects.create(title="Python", desc="description for Python")
+    book.objects.create(title="PHP", desc="description for PHP")
+    book.objects.create(title="Ruby", desc="description for Ruby")
+
+2) Crea 5 autores diferentes: Jane Austen, Emily Dickinson, Fyodor Dostoevksy, William Shakespeare, Lau Tzu
+    author.objects.create(first_name="Jane", last_name="Austen")
+    author.objects.create(first_name="Emily", last_name="Dickinson")
+    author.objects.create(first_name="Fyodor", last_name="Dostoevksy")
+    author.objects.create(first_name="William", last_name="Shakespeare")
+    author.objects.create(first_name="Lau", last_name="Tzu")
+
+3) Cambie el nombre del libro de C Sharp a C #
+    c=book.objects.get(id=1)
+    c.title = "C #"
+
+4) Cambie el nombre del cuarto autor a Bill
+    c=author.objects.get(id=4)
+    c.first_name = "Bill"
+
+5) Asigna el primer autor a los primeros 2 libros
+    this_author=author.objects.get(id=1)
+    book1=book.objects.get(id=1)
+    book2=book.objects.get(id=2)
+    this_author.books.add(book1, book2)
+
+6) Asigne el segundo autor a los primeros 3 libros
+    this_author=author.objects.get(id=2)
+    book3=book.objects.get(id=3)
+    this_author.books.add(book1,book2,book3)
+
+7) Asigna el tercer autor a los primeros 4 libros
+    this_author=author.objects.get(id=3)
+    book4=book.objects.get(id=4)
+    this_author.books.add(book1,book2,book3,book4)
+
+8) Asigne el cuarto autor a los primeros 5 libros (o en otras palabras, todos los libros)
+    this_author=author.objects.get(id=4)
+    book5=book.objects.get(id=5)
+    this_author.books.add(book1,book2,book3,book4,book5)
+
+9) Recupera a todos los autores del tercer libro
+    book3.authors.all()
+
+10) Eliminar al primer autor del tercer libro
+    No entendí lo que se pide, ya que al primer autor(Jane Austen),solo se le han asignado los primeros 2 libros,
+    no estoy seguro si esto es lo que se pide, o yo me estoy confundiendo, pero escribo a continuación la query para
+    eliminar al segundo autor
+    (Emily Dickinson) del tercer libro
+    c=book3.authors.get(id=2)
+    c.delete()
+
+11) Agregue el quinto autor como uno de los autores del segundo libro
+    this_author=author.objects.get(id=5)
+    book2.authors.add(this_author)
+
+12) Encuentra todos los libros de los que el tercer autor es parte
+    author3=author.objects.get(id=3)
+    author3.books.all()
+
+13) Encuentra todos los autores que contribuyeron al quinto libro
+    book5.authors.all()
+
+
